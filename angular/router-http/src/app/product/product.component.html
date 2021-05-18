@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-header bg-info">{{product.name}}</div>
+
+    <div class="card-body">
+        <p><a [routerLink]="['/find',product.id]">{{product.id}}</a></p>
+        <p>{{ product.name}}</p>
+        <p>{{ product.price}}</p>
+        <p>{{ product.description}}</p>
+        <hr/>
+        <button class="btn btn-primary" style="margin:5px" (click)="editProduct(product)">Update</button>
+        <button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+
+
+    </div>
+</div>

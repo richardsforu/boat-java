@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="card">
+    <div class="card-header">APP Component</div>
+    <div class="card-body">
+
+      <button class="btn btn-primary btn-space" (click)="greetMessage('Good Morning')">Good Morning</button>
+      <button class="btn btn-primary btn-space" (click)="greetMessage('Good Afternoon')">Good Afternoon</button>
+      <button class="btn btn-primary btn-space" (click)="greetMessage('Good Evening')">Good Evening</button>
+      <h2>{{childMsg}}</h2>
+      <div class="card card-body col-4 mt-3">
+        <app-greet (parentEvent)="parentFunction($event)" [msg]=msg></app-greet>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+</div>

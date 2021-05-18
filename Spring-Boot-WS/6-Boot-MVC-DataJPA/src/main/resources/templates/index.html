@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1 align="center">Welcome to Thymeleaf application</h1>
+	<hr />
+
+
+
+	<div align="center">
+		<form action="/find" method="post">
+			Select Passenger: <select name="passengerId">
+
+				<option th:each="passenger:${passengers}"
+					th:text="${passenger.passengerId}"></option>
+			</select> <br />
+
+			<button>Go</button>
+
+		</form>
+
+		<hr />
+
+		<div th:if="${coPassengers}">
+
+			<table border="1">
+				<thead>
+					<tr>
+						<th>Passenger ID</th>
+						<th>Passenger Name</th>
+						<th>Gender</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cp: ${coPassengers}">
+						<td th:text="${cp.copassengerId}"></td>
+						<td th:text="${cp.firstName}"></td>
+						<td th:text="${cp.gender}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+</body>
+</html>

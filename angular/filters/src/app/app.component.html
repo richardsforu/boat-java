@@ -1,0 +1,45 @@
+<div class="container">
+
+  {{ 1234.56 | currency:'INR' }} <br />
+
+  {{'Praveen'| uppercase}} <br />
+  {{'PRAVEEN' | lowercase}} <br />
+
+  {{getUrl()}}
+  <br />
+  {{url | json}} <br />
+
+  {{'2020-2-23' | date:'shortDate'}} <br />
+  {{'2020-2-23' | date:'fullDate'}} <br />
+  {{'2020-2-23' | date:'yyyy-MMM-dd'}} <br />
+
+  <hr />
+
+  <br />
+
+  <input placeholder="Filter Data Here" name="filterText" [(ngModel)]="query" class="form-control" />
+  <br/>
+
+  <table class="table table-bordered">
+    <tbody>
+      <tr *ngFor="let emp of employees | searchFilter:query">
+        <td>{{emp.id}}</td>
+        <td>{{emp.first_name}}</td>
+        <td>{{emp.last_name}}</td>
+        <td>{{emp.email}}</td>
+
+      </tr>
+    </tbody>
+
+  </table>
+
+
+
+
+
+
+
+
+
+
+</div>

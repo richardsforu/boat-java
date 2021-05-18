@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Helllo Angular</h1>
+  <hr />
+  <h2>{{name}}</h2>
+
+  <div [hidden]=status>
+    <h2>Div Content</h2>
+  </div>
+
+  <div style="color:{{myColor}}">
+    <h2>Another Div</h2>
+  </div>
+
+  <hr />
+
+  <h2> {{s1}}</h2>
+  <h2>{{s2}}</h2>
+  <h2> {{s3.value}}</h2>
+  <input name="fn" (keyup)="test1($event)"> <br /> <br />
+  <input name="ln" #s3  [(ngModel)]="s2"  placeholder="using ngModule"> <br /> <br />
+  <button (click)="test($event)">Click Here</button>
+
+
+</div>

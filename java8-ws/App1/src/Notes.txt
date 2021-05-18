@@ -1,0 +1,114 @@
+coding principles
+
+	=> DRY (do-not repeat yourself)
+	
+	
+	in java till version 1.7,
+	
+	first-class-citizens ==> primitives, objects
+	second-class-citizens ==> methods
+	
+	from java 8 onwards
+	first-class-citizens ==> primitives,objects and method/function
+	
+	Java 8 Features
+	--------------------------
+		Lambda expressions,
+		Method references,
+		Functional interfaces,
+		Stream API,
+		DateAndTime API,
+		Default methods,
+		Static methods in interface,
+		Optional class,
+		Collectors class,
+		ForEach() method,
+		Parallel array sorting,
+		Parallel Array Sorting,
+		Type and Repating Annotations,
+		IO Enhancements,
+		Concurrency Enhancements
+		
+	    Lambda expressions
+	   -------------------------
+	   
+	   
+	   Fruit{
+	    id,
+	    name
+	    type
+	    quantity
+	    price
+	   }
+	   
+	   -------------------------
+	   name  quantity type price
+	   --------------------------
+	   apple 10 		2	100
+	   mango 5  		6  	20
+	   apple 15 		3  	80
+	   apple 4  		1  	60
+	   mango 8  		2  	50
+	   --------------------------
+	   
+	   
+	   
+      ----------------------------------------------	   
+	   apple object
+	   		-> iterate array
+	   		-> find type of fruit
+	   		-> copy quantity
+	   		-> finding total price
+	   		-> finding individual type price total
+	   ---------------------------------------------
+	   
+	   
+	   for(int i=1;i<=10;i++){ print i}
+	   
+	   
+	   printData(int i){ // recursive
+	   print i;
+	   if(i==10)
+	    return;
+	   printData(i++);
+	   }
+	   
+	   
+	   // loc1
+	   printData(1);
+	   
+	   // loc2
+	   printData(5); 
+	   
+	   
+	   
+	   //--------------------------------------------------------------
+	   
+	   
+	   
+	   
+	   how 	Lambdas work in java8?
+	   --------------------------------
+	   arrow operator act like a return statement of a function/represent a function dynamically
+	   
+	   function abc(){
+	   return "Hello";
+	   }
+	   
+	   ()->"Hello"; // works perfectly with UI technologies like Javascript
+	   
+	   () -> [???] =>expresions 
+	   
+	   
+	  
+	   
+	   
+	   
+	   
+	   
+		
+		
+		
+	
+	
+	

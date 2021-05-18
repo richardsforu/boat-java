@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-header bg-info">{{product.name}}</div>
+
+    <div class="card-body">
+        <a [routerLink]="['/find',product.id]">{{product.id}}</a>
+
+        <P>{{ product.name}}</P>
+        <P>{{ product.price}}</P>
+        <P>{{ product.description}}</P>
+
+    </div>
+</div>

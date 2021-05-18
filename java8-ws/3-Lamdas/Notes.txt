@@ -1,0 +1,19 @@
+How to write functions in java8?
+=> using lamda expressions
+
+
+syntax:
+--------
+parameters -> body
+(Type p1) -> body
+(p1) -> body
+p1->body
+(p1,p2)-> body
+()->body
+()-> single statememt
+()->{multi-statements}
+
+Type of lamda expression = Functional Interface
+
+
+

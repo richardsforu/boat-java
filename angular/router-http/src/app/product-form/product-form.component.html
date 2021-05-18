@@ -1,0 +1,40 @@
+<div class="col-6">
+
+    <form [formGroup]="productForm" (ngSubmit)="handleSubmit()" autocomplete="off">
+
+    
+
+        <div class="form-group">
+            <label for="">Product Name</label>
+            <input type="text" name="name" formControlName="name" class="form-control" />
+            <span *ngIf="isSubmited  && fc.name.errors?.required" class="text-danger">Product Name is Required</span>
+
+        </div>
+
+        <div class="form-group">
+            <label for="">Price</label>
+            <input type="text" name="price" formControlName="price" class="form-control" />
+            <span *ngIf="isSubmited  && fc.price.errors?.required" class="text-danger">Price is Required</span>
+            <span *ngIf="isSubmited  && fc.price.errors?.pattern" class="text-danger">Invalid Price</span>
+
+        </div>
+
+        <div>
+            <label for="">Description</label>
+            <textarea name="description" formControlName="description" class="form-control"></textarea>
+        </div>
+
+       
+
+        <div class="form-group mt-2 text-center">
+            <button  *ngIf=isAddMode class="btn btn-primary" style="margin:5px">Save</button>
+            <button  *ngIf=!isAddMode class="btn btn-primary">Update</button>
+        </div>
+
+
+
+
+
+
+    </form>
+</div>
