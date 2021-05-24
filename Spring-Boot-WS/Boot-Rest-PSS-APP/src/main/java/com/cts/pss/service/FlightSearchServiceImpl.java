@@ -56,6 +56,12 @@ public class FlightSearchServiceImpl implements FlightSearchService {
 		return flightDao.findByFlightNumberAndOriginAndDestinationAndFlightDate(query.getFlightNumber(), query.getOrigin(), query.getDestination(), query.getFlightDate());
 	}
 	
+	// find Flight By FlightNumber,origin,Destination and FLight Date
+		@Override
+		public Flight findFlightByFlightNumberAndOriginAndDestinationAndFlightDate(String flightNumber,String origin,String destination,LocalDate flightDate) {
+			return flightDao.findByFlightNumberAndOriginAndDestinationAndFlightDate(flightNumber, origin, destination, flightDate);
+		}
+	
 	
 	// Find Fare of a given Scheduled Flight ID
 	@Override

@@ -10,5 +10,5 @@ import com.cts.pss.entity.Flight;
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
 	List<Flight> findFlightByOriginAndDestinationAndFlightDate(String origin,String destination,LocalDate flightDate);
-	Flight findByFlightNumberAndOriginAndDestinationAndFlightDate(String flightNumber,String origin,String destination,LocalDate fliightDate);
+	Flight findByFlightNumberAndOriginAndDestinationAndFlightDate(String flightNumber,String origin,String destination,LocalDate flightDate);
 }

@@ -12,6 +12,9 @@ import com.cts.pss.entity.Flight;
 import com.cts.pss.model.SearchQuery;
 
 public interface FlightSearchService {
+	
+	 Flight findFlightByFlightNumberAndOriginAndDestinationAndFlightDate(String flightNumber,String origin,String destination,LocalDate flightDate);
+
 
 	//Find Scheduled flights by Origin,Destination and FlightDate
 	List<Flight> findFlights(SearchQuery query);
