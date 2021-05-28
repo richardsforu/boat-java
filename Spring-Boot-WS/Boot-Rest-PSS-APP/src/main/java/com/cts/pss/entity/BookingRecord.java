@@ -25,6 +25,7 @@ public class BookingRecord {
 	private LocalTime flightTime;
 	private String status;
 	private String flightNumber;
+	private int travellers;
 
 	@OneToOne
 	@JoinColumn(name = "flightInfoid")
@@ -32,6 +33,27 @@ public class BookingRecord {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "passengerId")
 	private Passenger passenger;
+	
+	public BookingRecord() {
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	public BookingRecord(LocalDateTime bookingDate, LocalDate flightDate, LocalTime flightTime, String flightNumber,
+			String origin, String destination, String status, int travellers,Passenger passenger, FlightInfo flightInfo) {
+		super();
+		this.bookingDate = bookingDate;
+		this.flightDate = flightDate;
+		this.flightTime = flightTime;
+		this.flightNumber = flightNumber;
+		this.origin = origin;
+		this.destination = destination;
+
+		this.status = status;
+		this.travellers=travellers;
+		this.passenger = passenger;
+		this.flightInfo = flightInfo;
+	}
 
 	public int getBookingId() {
 		return bookingId;
@@ -120,5 +142,15 @@ public class BookingRecord {
 	public void setPassenger(Passenger passenger) {
 		this.passenger = passenger;
 	}
+
+	public int getTravellers() {
+		return travellers;
+	}
+
+	public void setTravellers(int travellers) {
+		this.travellers = travellers;
+	}
+	
+	
 
 }

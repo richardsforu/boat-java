@@ -11,17 +11,17 @@ import com.cts.pss.entity.Fare;
 import com.cts.pss.entity.Flight;
 import com.cts.pss.model.SearchQuery;
 
-public interface FlightSearchService {
-	
-	 Flight findFlightByFlightNumberAndOriginAndDestinationAndFlightDate(String flightNumber,String origin,String destination,LocalDate flightDate);
+public interface FlightService {
 
+	Flight findFlightByFlightNumberAndOriginAndDestinationAndFlightDate(String flightNumber, String origin,
+			String destination, LocalDate flightDate);
 
-	//Find Scheduled flights by Origin,Destination and FlightDate
+	// Find Scheduled flights by Origin,Destination and FlightDate
 	List<Flight> findFlights(SearchQuery query);
 
 	List<Flight> listScheduledFlights(String origin, String destination, LocalDate flightDate, int travellers);
 
-	//Find Flight By Flight Schedule ID
+	// Find Flight By Flight Schedule ID
 	Flight findFlightById(int id);
 
 	// find Flight By FlightNumber,origin,Destination and FLight Date
@@ -30,10 +30,16 @@ public interface FlightSearchService {
 	// Find Fare of a given Scheduled Flight ID
 	Fare findFareByFlightId(int id);
 
-	//Find Fare of a Flight by FlightNumber,Origin, Destination and FlightDate
+	// Find Fare of a Flight by FlightNumber,Origin, Destination and FlightDate
 	Fare getFareByQuery(SearchQuery query);
 
 	// Schedule new Flight
 	Flight scheduleFlight(Flight flight);
 
+	public void removeFlightByFlightNumberAndOriginAndDestinationAndFlightDate(String flightNumber, String origin,
+			String destination, LocalDate flightDate);
+
+	public void removeFlightByFlightNumberAndOriginAndDestinationAndFlightDate(SearchQuery query);
+
+	public void removeFlightById(int id);
 }

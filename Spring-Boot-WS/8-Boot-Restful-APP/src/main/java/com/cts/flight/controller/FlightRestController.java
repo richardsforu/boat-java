@@ -96,6 +96,7 @@ public class FlightRestController {
 	
 	@PostMapping("/{id}/{numberofPassengers}")
 	public BookingRecord bookFlight(@RequestBody Passenger passenger,@PathVariable("id") int id,@PathVariable("numberofPassengers")int numberofPassengers) {
+		
 		Flight flight =dao.findById(id).orElse(null);
 		BookingRecord book=new BookingRecord();
 		book.setOrigin(flight.getOrigin());
@@ -110,6 +111,7 @@ public class FlightRestController {
 		
 		book.setStatus("CONFIRMED");
 		return bookingDao.save(book);
+		
 	}
 	
 	@PostMapping("/{bookingId}")
