@@ -26,6 +26,12 @@ public class FlightRestController {
 
 	@Autowired
 	private FlightService flightService;
+	
+	
+	@GetMapping("/{id}")
+	public Flight getFlightById(@PathVariable int id) {
+		return flightService.findFlightById(id);
+	}
 
 	// get a single flight with POST request
 	@PostMapping("/byFlightNumber")
@@ -92,7 +98,7 @@ public class FlightRestController {
 	}
 
 	// get Flight fare By ID
-	@GetMapping("/{flightId}")
+	@GetMapping("getFare/{flightId}")
 	public Fare findFareByFlightId(@PathVariable int flightId) {
 		return flightService.findFareByFlightId(flightId);
 	}

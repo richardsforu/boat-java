@@ -95,7 +95,7 @@ public class BookingServiceImpl implements BookingService {
 		return bookingData;
 	}
 
-	// Reschedule Flight
+	// Reschedule Booked Flight
 	@Override
 	public BookingRecord rescheduleBooking(int bookingId, int flightId) {
 		BookingRecord bookingRecord = getBookingData(bookingId);
@@ -109,7 +109,7 @@ public class BookingServiceImpl implements BookingService {
 		// Get New Selected Flight Information
 		Flight newFlight = flightService.findFlightById(flightId);
 
-		// New Booking Information
+		// New Flight Booking Information
 		bookingRecord.setFlightNumber(newFlight.getFlightNumber());
 		bookingRecord.setOrigin(newFlight.getOrigin());
 		bookingRecord.setDestination(newFlight.getDestination());
