@@ -1,16 +1,21 @@
 package com.cts.pss.service;
 
+import java.awt.print.Book;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cts.pss.dao.BookingRepository;
 import com.cts.pss.dao.CoPassengerRepository;
+import com.cts.pss.dao.PassengerDao;
 import com.cts.pss.entity.BookingRecord;
 import com.cts.pss.entity.CoPassenger;
 import com.cts.pss.entity.Flight;
+import com.cts.pss.entity.Passenger;
 import com.cts.pss.model.SearchQuery;
 
 @Service
@@ -22,6 +27,9 @@ public class BookingServiceImpl implements BookingService {
 	private CoPassengerRepository coPassengerDao;
 	@Autowired
 	private FlightService flightService;
+	
+	@Autowired
+	private PassengerDao passengerDao;
 
 	@Override
 	public BookingRecord bookFlight(SearchQuery query) {
@@ -73,25 +81,44 @@ public class BookingServiceImpl implements BookingService {
 	public BookingRecord customCancelBooking(int bookingId, List<CoPassenger> coPassengers) {
 		// against to whose booking id CO-Passengers  have to be deleted?
 		BookingRecord bookingData = getBookingData(bookingId);
+		
 		Flight flight = flightService.findFlightByFlightNumberAndOriginAndDestinationAndFlightDate(
 				bookingData.getFlightNumber(), bookingData.getOrigin(), bookingData.getDestination(),
 				bookingData.getFlightDate());
 		
 
 		// Get All CO-Passengers to be deleted from UI
-		//List<CoPassenger> cpl = coPassengers;//bookingData.getPassenger().getCoPassengers();
-
 		//Remove CO-Passenger in copassengers table and co_passenger table separately using native sql query
 		for (CoPassenger cp : coPassengers) {
 			coPassengerDao.deleteCopassengersById(cp.getCopassengerId());
-			coPassengerDao.deleteByCopassengerId(cp.getCopassengerId());
+			coPassengerDao.deleteCopassenger(cp.getCopassengerId());
 		}
+		
+		Passenger passenger=bookingData.getPassenger();
+		
+		// copy only copassengerIds from coPassengers collection 
+		Set<Integer> ids = coPassengers.stream()
+		        .map(CoPassenger::getCopassengerId)
+		        .collect(Collectors.toSet());
+		
+		List<CoPassenger> updatedCoPassengers = passenger.getCoPassengers().stream()
+		        .filter(cp -> !ids.contains(cp.getCopassengerId()))
+		        .collect(Collectors.toList());
+		
+		passenger.setCoPassengers(updatedCoPassengers);
+	
+		
+
+		
 		// Update number of Travellers after deleting the CO-Passengers
 		bookingData.setTravellers(bookingData.getTravellers()- coPassengers.size());
+		bookingData.setPassenger(passenger);
 		//Update Deleted Booking to the flight Inventory
 		flight.getInventory().setCount(flight.getInventory().getCount()+coPassengers.size());
+		
 		bookingDao.save(bookingData);
 		flightService.scheduleFlight(flight);
+		
 		return bookingData;
 	}
 

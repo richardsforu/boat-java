@@ -6,11 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cts.pss.entity.CoPassenger;
+
 @Transactional
 public interface CoPassengerRepository extends JpaRepository<CoPassenger, Integer> {
 
 	@Modifying
-	@Query(value = "delete from copassengers  where copassenger_id= :copassenger_id",nativeQuery = true)
+	@Query(value = "delete from copassengers  where copassenger_id= :copassenger_id", nativeQuery = true)
 	public void deleteCopassengersById(int copassenger_id);
-	public void deleteByCopassengerId(int copassengerId);
+
+	@Modifying
+	@Query(value = "delete from co_passenger where copassenger_id= :copassenger_id", nativeQuery = true)
+	public void deleteCopassenger(int copassenger_id);
 }

@@ -47,4 +47,12 @@ public class CoPassenger {
 		this.gender = gender;
 	}
 
+	@Override
+	public String toString() {
+		return "CoPassenger [copassengerId=" + copassengerId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", gender=" + gender + "]";
+	}
+	
+	
+
 }
